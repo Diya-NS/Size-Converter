@@ -1,42 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clothing Size Converter</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Body Measurement → Brand Size Converter</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Size Converter — H&M &amp; Zara</h1>
+      <p>Enter your measurements and get equivalent sizes for selected brands.</p>
+    </header>
 
-<div class="container">
-    <h2>Clothing Size Converter</h2>
+    <main>
+      <form id="converterForm">
+        <div class="row">
+          <label>Gender</label>
+          <select id="gender" required>
+            <option value="women">Women</option>
+            <option value="men">Men</option>
+          </select>
+        </div>
 
-    <label for="gender">Gender:</label>
-    <select id="gender">
-        <option value="men">Men</option>
-        <option value="women">Women</option>
-    </select>
+        <div class="row">
+          <label>Units</label>
+          <select id="units">
+            <option value="in">Inches (in)</option>
+            <option value="cm">Centimeters (cm)</option>
+          </select>
+        </div>
 
-    <label for="unit">Unit:</label>
-    <select id="unit">
-        <option value="cm">Centimeters</option>
-        <option value="in">Inches</option>
-    </select>
+        <div class="row">
+          <label>Garment type</label>
+          <select id="category">
+            <!-- category options updated by JS depending on gender -->
+          </select>
+        </div>
 
-    <label for="chest">Chest:</label>
-    <input type="number" id="chest" placeholder="Enter chest measurement">
+        <fieldset class="measurements">
+          <legend>Measurements</legend>
+          <div class="row small">
+            <label for="chest">Chest / Bust</label>
+            <input id="chest" type="number" step="0.1" min="0" placeholder="e.g. 36" />
+          </div>
+          <div class="row small">
+            <label for="waist">Waist</label>
+            <input id="waist" type="number" step="0.1" min="0" placeholder="e.g. 28" />
+          </div>
+          <div class="row small">
+            <label for="hips">Hips</label>
+            <input id="hips" type="number" step="0.1" min="0" placeholder="e.g. 38" />
+          </div>
+        </fieldset>
 
-    <label for="waist">Waist:</label>
-    <input type="number" id="waist" placeholder="Enter waist measurement">
+        <div class="row">
+          <label>Brands</label>
+          <div class="brands">
+            <label><input type="checkbox" value="hm" checked /> H&amp;M</label>
+            <label><input type="checkbox" value="zara" checked /> Zara</label>
+          </div>
+        </div>
 
-    <label for="hips">Hips:</label>
-    <input type="number" id="hips" placeholder="Enter hips measurement">
+        <div class="actions">
+          <button type="button" id="convertBtn">Convert size</button>
+          <button type="button" id="resetBtn">Reset</button>
+        </div>
+      </form>
 
-    <button onclick="convertSizes()">Convert</button>
+      <section id="results">
+        <h2>Results</h2>
+        <div id="resultsContent">
+          <p>No results yet — enter measurements and click <strong>Convert size</strong>.</p>
+        </div>
+      </section>
+    </main>
 
-    <div class="result" id="result"></div>
-</div>
+    <footer>
+      <small>Uses simplified charts for H&amp;M and Zara — approximate sizes for guidance only.</small>
+    </footer>
+  </div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
